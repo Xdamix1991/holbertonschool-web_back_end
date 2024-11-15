@@ -4,7 +4,7 @@ export default class Airport {
     this._code = code;
   }
 
-  toSting() {
-    return '[${type of} ${this._code}]';
+  toString() {
+    return `[${typeof this} ${this._code}]`;
   }
 }
