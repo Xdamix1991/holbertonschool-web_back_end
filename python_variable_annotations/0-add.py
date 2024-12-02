@@ -1,11 +1,9 @@
-#!/usr/bin/python3
-"""
-function add with floats numbers
- """
+#!/usr/bin/env python3
+"""add"""
 
 
 def add(a: float, b: float) -> float:
     """
-    adding function of the numbers type float
+    Adds two floating-point numbers and returns the result.
     """
     return a + b
