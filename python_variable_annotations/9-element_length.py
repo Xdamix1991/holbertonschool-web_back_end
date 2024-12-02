@@ -3,6 +3,6 @@
 from typing import List, Iterable, Tuple, Sequence
 
 
-def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence]]:
+def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
     """ function lenght of an element """
     return [(i, len(i)) for i in lst]
