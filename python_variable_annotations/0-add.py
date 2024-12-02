@@ -4,7 +4,7 @@ function add with floats
  """
 
 
-def add(a: float, b: float):
+def add(a: float, b: float) -> float:
     """
     adding function
       """
