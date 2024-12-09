@@ -2,11 +2,11 @@
 """ this module contains a function  """
 import asyncio
 import random
+from typing import AsyncGenerator
 
 
-async def async_generator():
+async def async_generator() -> AsyncGenerator[float, None]:
     """ async function random float return """
     for i in range(10):
         await asyncio.sleep(1)
         yield random.uniform(1, 10)
-
