@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """ this module contains a function to filter data from csv file """
 import csv
 import math
