@@ -49,5 +49,5 @@ class Server:
             'data': data_page,
             'next_page': next_page,
             'prev_page': prev_page,
-            'total_page': total_pages
+            'total_pages': total_pages
         }
