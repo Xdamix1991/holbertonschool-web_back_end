@@ -3,7 +3,7 @@
 from typing import Tuple
 
 
-def index_range(page: int, page_size: int) -> Tuple:
+def index_range(page: int, page_size: int) -> tuple:
     """ function to return page indexs start and end """
     x = (page - 1) * page_size
     y = page * page_size
