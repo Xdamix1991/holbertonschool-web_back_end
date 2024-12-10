@@ -43,18 +43,23 @@ class Server:
         """ this function retrieves sorted data with index  """
         assert isinstance(index, int) and index > 0
         assert isinstance(page_size, int) and page_size > 0
+
         datas = self.indexed_dataset()
         data_keys = list(datas.keys())
         total_keys = len(data_keys)
+
         assert index < total_keys
+
         data = []
         next_index = index
         count = 0
+
         while count < page_size and next_index < total_keys:
             if next_index in datas:
                 data.append(datas[next_index])
                 count += 1
             next_index += 1
+            
         return {
             'index': index,
             'data': data,
