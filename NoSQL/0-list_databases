@@ -1,1 +1,4 @@
-show databases
+#!/usr/bin/bash
+// show databases in mongo db
+
+SHOW DATABASES;
