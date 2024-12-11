@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" this module contains a function """
+""" this module contains a script """
 from pymongo import MongoClient
 import pymongo
 
