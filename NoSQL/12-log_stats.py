@@ -18,10 +18,10 @@ def x():
     print("Methods:")
     for x in method:
         count = mycol.count_documents({"method": x})
-        print("     method {}: {}".format(x, count))
+        print("\tmethod {}: {}".format(x, count))
     status = mycol.count_documents({"method": "GET", "path": "/status"})
     print("{} status check".format(status))
 
 
-if "__name__" == "__main__":
+if __name__ == "__main__":
     x()
