@@ -17,5 +17,5 @@ print("Methods:")
 for x in method:
     count = mycol.count_documents({"method": x})
     print("     method {}: {}".format(x, count))
-status = mycol.count_documents({"path": "/status"})
+status = mycol.count_documents( {"method": "GET", "path": "/status"})
 print("{} status check".format(status))
