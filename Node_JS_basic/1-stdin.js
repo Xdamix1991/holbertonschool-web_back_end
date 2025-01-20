@@ -8,3 +8,7 @@ function x() {
   });
 }
 module.exports = x;
+
+if (require.main === module) {
+  x();
+}
