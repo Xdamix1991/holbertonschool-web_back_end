@@ -11,6 +11,7 @@ function countStudents(path) {
     const data = fs.readFileSync(path, 'utf-8');
     const lines = data.split('\n');
     lines.forEach((line) => {
+      if (line.trim() === '') return;
       const dataInrow = line.split(',');
       const firstname = dataInrow[0].trim();
       const len = dataInrow.length;
