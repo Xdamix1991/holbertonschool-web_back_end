@@ -1,4 +1,3 @@
-const csvParser = require('csv-parser');
 const fs = require('node:fs');
 
 function countStudents(path) {
@@ -8,26 +7,29 @@ function countStudents(path) {
   const listCs = [];
   const listSwe = [];
 
-  fs.createReadStream(path)
-    .on('error', () => {
-      throw new Error('Cannot load the database');
-    })
-    .pipe(csvParser())
-    .on('data', (row) => {
+  try {
+    const data = fs.readFileSync(path, 'utf-8');
+    const lines = data.split('\n');
+    lines.forEach((line) => {
+      const dataInrow = line.split(',');
+      const firstname = dataInrow[0].trim();
+      const len = dataInrow.length;
+      const field = dataInrow[len - 1].trim();
       countt += 1;
-      if (row.field === 'CS') {
+
+      if (field === 'CS') {
         countCs += 1;
-        listCs.push(row.firstname);
-      }
-      if (row.field === 'SWE') {
+        listCs.push(firstname);
+      } else if (field === 'SWE') {
         countSwe += 1;
-        listSwe.push(row.firstname);
+        listSwe.push(firstname);
       }
-    })
-    .on('end', () => {
-      console.log(`Number of students: ${countt}`);
-      console.log(`Number of students in CS: ${countCs}.`, 'List:', listCs.join(', '));
-      console.log(`Number of students in SWE: ${countSwe}.`, 'List:', listSwe.join(', '));
     });
+    console.log(`Number of students: ${countt}`);
+    console.log(`Number of students in CS: ${countCs}.`, 'List:', listCs.join(', '));
+    console.log(`Number of students in SWE: ${countSwe}.`, 'List:', listSwe.join(', '));
+  } catch (error) {
+    throw new Error('Cannot load the database');
+  }
 }
 module.exports = countStudents;
