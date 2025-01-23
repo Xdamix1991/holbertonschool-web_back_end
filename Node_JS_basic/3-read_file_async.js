@@ -14,20 +14,23 @@ function countStudents(path) {
       })
       .pipe(csvParser())
       .on('data', (row) => {
-        countt += 1;
-        if (row.field === 'CS') {
-          countCs += 1;
-          listCs.push(row.firstname);
-        }
-        if (row.field === 'SWE') {
-          countSwe += 1;
-          listSwe.push(row.firstname);
+        // Vérifier que la ligne n'est pas vide
+        if (row.firstname && row.field) {
+          countt += 1;
+          if (row.field === 'CS') {
+            countCs += 1;
+            listCs.push(row.firstname);
+          }
+          if (row.field === 'SWE') {
+            countSwe += 1;
+            listSwe.push(row.firstname);
+          }
         }
       })
       .on('end', () => {
         console.log(`Number of students: ${countt}`);
-        console.log(`Number of students in CS: ${countCs}.`, 'List:', listCs.join(', '));
-        console.log(`Number of students in SWE: ${countSwe}.`, 'List:', listSwe.join(', '));
+        console.log(`Number of students in CS: ${countCs}. List: ${listCs.join(', ')}`);
+        console.log(`Number of students in SWE: ${countSwe}. List: ${listSwe.join(', ')}`);
         resolve();
       });
   });
