@@ -28,10 +28,13 @@ function countStudents(path) {
         }
       })
       .on('end', () => {
-        console.log(`Number of students: ${countt}`);
-        console.log(`Number of students in CS: ${countCs}. List: ${listCs.join(', ')}`);
-        console.log(`Number of students in SWE: ${countSwe}. List: ${listSwe.join(', ')}`);
-        resolve();
+        const output = [
+          `Number of students: ${countt}`,
+          `Number of students in CS: ${countCs}. List: ${listCs.join(', ')}`,
+          `Number of students in SWE: ${countSwe}. List: ${listSwe.join(', ')}`,
+        ].join('\n');
+        console.log(output); // Sortie pour terminal
+        resolve(output); // Retourne la sortie dans la promesse
       });
   });
 }
