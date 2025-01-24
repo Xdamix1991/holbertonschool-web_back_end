@@ -1,24 +1,27 @@
-const express = require('express');
-
-const app = express();
-const databaseName = process.argv[2];
+const http = require('http');
 const countStudents = require('./3-read_file_async');
 
-app.get('/', (req, res) => {
-  res.send('Hello Holberton School!');
-});
-app.get('/students', async (req, res) => {
-  res.write('This is the list of our students\n');
-  if (!databaseName) {
-    res.end('No database provided\n');
-    return;
+const databaseName = process.argv[2];
+
+const app = http.createServer(async (req, res) => {
+  if (req.url === '/') {
+    res.end('Hello Holberton School!');
+  } else if (req.url === '/students') {
+    res.write('This is the list of our students\n');
+    if (!databaseName) {
+      res.end('No database provided\n');
+    } else {
+      try {
+        const output = await countStudents(databaseName);
+        res.end(output);
+      } catch (error) {
+        res.end(`${error.message}\n`);
+      }
+    }
+  } else {
+    res.end('Not Found');
   }
-  try {
-    const output = await countStudents(databaseName);
-    res.end(output);
-  } catch (error) {
-    res.end(error.message);
-  }
 });
+
 app.listen(1245);
 module.exports = app;
