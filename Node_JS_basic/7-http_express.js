@@ -9,14 +9,13 @@ app.get('/', (req, res) => {
   res.end('Hello Holberton School!');
 });
 app.get('/students', async (req, res) => {
-  res.write('This is the list of our students');
   if (!database) {
-    res.end('Cannot load the database');
+    res.send('Cannot load the database');
+    return;
   } else {
     try {
       const output = await countStudents(database);
-      res.send(output);
-      res.end();
+      res.send(`This is the list of our students\n${output}`);
     } catch (error) {
       res.send(error.message);
     }
