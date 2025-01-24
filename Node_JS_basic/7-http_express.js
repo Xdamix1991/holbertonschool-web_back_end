@@ -15,7 +15,7 @@ app.get('/students', async (req, res) => {
   } else {
     try {
       const output = await countStudents(database);
-      res.write(output);
+      res.send(output);
       res.end();
     } catch (error) {
       res.end(error.message);
