@@ -6,7 +6,7 @@ const databaseName = process.argv[2];
 const app = http.createServer(async (req, res) => {
   if (req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.whrite('Hello Holberton School!');
+    res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
 
     if (!databaseName) {
