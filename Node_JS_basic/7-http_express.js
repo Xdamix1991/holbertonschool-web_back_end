@@ -6,7 +6,7 @@ const countStudents = require('./3-read_file_async');
 const database = process.argv[2];
 
 app.get('/', (req, res) => {
-  res.end('Hello Holberton School!');
+  res.send('Hello Holberton School!');
 });
 app.get('/students', async (req, res) => {
   res.write('This is the list of our students');
