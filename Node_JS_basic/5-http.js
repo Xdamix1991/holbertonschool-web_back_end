@@ -6,14 +6,15 @@ const databaseName = process.argv[2];
 const app = http.createServer(async (req, res) => {
   if (req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello Holberton School!');
+    res.whrite('Hello Holberton School!');
   } else if (req.url === '/students') {
-    res.write('This is the list of our students\n');
+
     if (!databaseName) {
       res.end('No database provided');
     } else {
       try {
         const output = await countStudents(databaseName);
+        res.write('This is the list of our students');
         res.end(output);
       } catch (error) {
         res.end(error.message);
